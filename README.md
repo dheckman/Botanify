@@ -1,38 +1,24 @@
-# Welcome to Remix!
+# Welcome to Botanify!
 
-- [Remix Docs](https://remix.run/docs)
-
-## Development
+## To run locally
 
 From your terminal:
 
 ```sh
-npm run dev
+git clone <url>
+cd to repo
+yarn install
+yarn dev
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+## Things I considered:
 
-## Deployment
+- Accessibility
+  - This app is pretty image heavy, so I mainly focused on ensuring all images had alt attributes.
+  - I used [Google Lighthouse](https://developer.chrome.com/docs/lighthouse) to periodically audit my pages.
 
-First, build your app for production:
+## Todo:
 
-```sh
-npm run build
-```
+- Unit tests
 
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+Server will be available at http://localhost:3000/
