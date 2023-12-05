@@ -1,5 +1,5 @@
 {
-  "name": "my-remix-app",
+  "name": "Botanify",
   "private": true,
   "sideEffects": false,
   "scripts": {
@@ -26,7 +26,10 @@
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
     "eslint": "^8.47.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.33.2",
+    "prettier": "3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.1.6"
   },
