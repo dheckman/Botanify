@@ -11,6 +11,13 @@ yarn install
 yarn dev
 ```
 
+## Tools used:
+
+- [Remix](https://remix.run/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- Prettier & ESLint for code formatting and linting
+
 ## Things I considered:
 
 - Accessibility
@@ -20,5 +27,7 @@ yarn dev
 ## Todo:
 
 - Unit tests
+- Ran into hydration issue when rendering the cart total badge. Workaround by using the useEffect hook, but would like to explore better solutions
+- Clean/abstract more of the update cart functionality
 
 Server will be available at http://localhost:3000/
