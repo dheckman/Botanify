@@ -37,7 +37,7 @@ export default function ProductCatalog() {
 
   return (
     <>
-      <div className="grid grid-cols-2 justify-center justify-items-center gap-4 py-8 sm:grid-cols-1 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 justify-items-center gap-4 py-8 sm:grid-cols-2 md:grid-cols-3 md:gap-6 lg:grid-cols-3">
         {products?.map((product: ProductsDataType) => (
           <Link prefetch="intent" key={product.id} to={`products/${product.id}`}>
             <div className="border-slate-400/25 max-w-[260px] rounded-md border shadow-sm">

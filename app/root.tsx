@@ -69,7 +69,7 @@ const Document = ({ children }: { children: React.ReactNode }) => {
       </head>
       <body className="font-inter bg-main-green">
         <div className={`${isCartOpen ? overlayClasses : 'opacity-0'}`}></div>
-        <div className="px-12 lg:px-24 py-8">
+        <div className="px-12 py-8">
           <nav className="flex justify-between">
             <Link to="/">
               <img alt="Fast Growing Trees logo" src={fgtLogo} />
@@ -80,7 +80,7 @@ const Document = ({ children }: { children: React.ReactNode }) => {
               onClick={toggleCart}
               src={cartDesktop}
             />
-            <div className="bg-button-red text-white absolute right-[92px] w-4 rounded-full text-center text-[10px]">
+            <div className="bg-button-red text-white absolute right-[48px] w-4 rounded-full text-center text-[10px]">
               {totalCartItems}
             </div>
           </nav>
