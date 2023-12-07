@@ -11,6 +11,8 @@ yarn install
 yarn dev
 ```
 
+Server will be available at http://localhost:3000/
+
 ## Tools used:
 
 - [Remix](https://remix.run/)
@@ -26,8 +28,6 @@ yarn dev
 
 ## Todo:
 
-- Unit tests
+- Unit tests / e2e tests
 - Ran into hydration issue when rendering the cart total badge. Workaround by using the useEffect hook, but would like to explore better solutions
-- Clean/abstract more of the update cart functionality
-
-Server will be available at http://localhost:3000/
+- Clean up/abstract more of the update cart functionality
