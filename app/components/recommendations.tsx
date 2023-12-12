@@ -34,14 +34,14 @@ export default function Recommendations() {
   }, [cart]);
 
   const handleAddToCart = (product: ProductsDataType) => {
-    return handleUpdateCart(product, setCart);
+    return handleUpdateCart(product, 'increaseCount', setCart);
   };
 
   return (
     <div>
       <p className="py-4 font-semibold">Recommended Items</p>
       {filteredRecommendations?.map((product) => (
-        <div key={product.id} className="p-4 flex items-center justify-between">
+        <div key={product.id} className="flex items-center justify-between p-4">
           <img
             alt={product.thumbnail.alt || `image of ${product.title}`}
             className="max-w-[110px]"

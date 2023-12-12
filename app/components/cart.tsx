@@ -8,6 +8,7 @@ import formatCurrency from './currency-formatter';
 import { useRouteData } from '~/hooks/useRouteData';
 import { AllProductsDataType, ProductsDataType } from '~/routes/_index';
 import { Operation } from './counter';
+import { handleUpdateCart } from '~/helpers/handleUpdateCart';
 
 const shippingThreshold = 150;
 
@@ -30,28 +31,12 @@ export default function Cart({ setIsCartOpen }: { setIsCartOpen: (isCartOpen: bo
     }
   };
 
-  const handleUpdateCart = (productId: number, operation: Operation) => {
-    setCart((prevCart) => {
-      const updatedCart = { ...prevCart };
-      if (updatedCart[productId]) {
-        if (operation === 'increaseCount') {
-          updatedCart[productId] = {
-            ...updatedCart[productId],
-            quantity: updatedCart[productId].quantity + 1
-          };
-        } else {
-          updatedCart[productId] = {
-            ...updatedCart[productId],
-            quantity: updatedCart[productId].quantity - 1
-          };
-        }
-      }
-      return updatedCart;
-    });
+  const handleCartChange = (product: ProductsDataType, operation: Operation) => {
+    handleUpdateCart(product, operation, setCart);
   };
 
   return (
-    <section className="bg-white fixed right-0 top-0 h-full w-[432px] overflow-scroll">
+    <section className="fixed right-0 top-0 h-full w-[432px] overflow-scroll bg-white">
       <div className="p-6">
         <div className="grid">
           <img
@@ -74,9 +59,9 @@ export default function Cart({ setIsCartOpen }: { setIsCartOpen: (isCartOpen: bo
         ) : (
           <>
             {getProducts().map((product) => (
-              <CartItem key={product.id} product={product} handleUpdateCart={handleUpdateCart} />
+              <CartItem key={product.id} product={product} handleUpdateCart={handleCartChange} />
             ))}
-            <div className="py-4 flex justify-between text-lg">
+            <div className="flex justify-between py-4 text-lg">
               <p className="font-semibold">Subtotal</p>
               <p>{formatCurrency(totalPrice)}</p>
             </div>

@@ -9,7 +9,7 @@ export default function CartItem({
   handleUpdateCart
 }: {
   product: ProductsDataType;
-  handleUpdateCart: (productId: number, operation: Operation) => void;
+  handleUpdateCart: (product: ProductsDataType, operation: Operation) => void;
 }) {
   const [cart, setCart] = useLocalStorageState<CartProps>('cart', {});
 
@@ -22,7 +22,7 @@ export default function CartItem({
   };
 
   return (
-    <div className="p-4 flex justify-between">
+    <div className="flex justify-between p-4">
       <img
         className="max-w-[110px]"
         src={product.images[0].src || product.thumbnail.src}

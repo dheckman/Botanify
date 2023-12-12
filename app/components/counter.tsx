@@ -1,3 +1,4 @@
+import { ProductsDataType } from '~/routes/_index';
 import minusCircle from '../assets/minus-circle.svg';
 import plusCircle from '../assets/plus-circle.svg';
 import useLocalStorageState from 'use-local-storage-state';
@@ -7,8 +8,8 @@ export type Operation = 'decreaseCount' | 'increaseCount';
 
 interface CounterProps {
   removeProductCallback: (productId: number) => void;
-  handleUpdateQuantity: (productId: number, operation: Operation) => void;
-  product: Product;
+  handleUpdateQuantity: (product: ProductsDataType, operation: Operation) => void;
+  product: ProductsDataType;
 }
 
 export default function Counter({
@@ -20,14 +21,14 @@ export default function Counter({
   const { id, quantity } = product;
 
   const reduceCount = (): void => {
-    handleUpdateQuantity(id, 'decreaseCount');
+    handleUpdateQuantity(product, 'decreaseCount');
     if (product.quantity === 1) {
       removeProductCallback(id);
     }
   };
 
   const increaseCount = (): void => {
-    handleUpdateQuantity(id, 'increaseCount');
+    handleUpdateQuantity(product, 'increaseCount');
   };
 
   const setQuantity = (quantity: number | null): void => {
@@ -57,7 +58,7 @@ export default function Counter({
         <img className="max-w-none" src={minusCircle} />
       </button>
       <input
-        className="px-3 w-10 text-center"
+        className="w-10 px-3 text-center"
         inputMode="numeric"
         aria-label="current product quantity in cart"
         pattern="[0-9]*"
