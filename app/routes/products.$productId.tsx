@@ -14,11 +14,12 @@ export type Product = {
   title: string;
   price: number;
   thumbnail: string;
-  image?: string;
-  quantity?: number;
+  image: string;
+  quantity: number;
   kitQuantity: number;
   prunersInCart: boolean;
   treeCount: number;
+  product_type: string;
 };
 
 export interface CartProps {
