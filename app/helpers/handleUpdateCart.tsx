@@ -6,9 +6,9 @@ import { CartProps } from '~/routes/products.$productId';
 export const handleUpdateCart = (
   product: ProductsDataType,
   operation: Operation,
-  setCart: (cart: CartProps) => void
+  setCart: (cart: CartProps | {}) => void
 ) => {
-  setCart((prevCart) => {
+  setCart((prevCart: CartProps) => {
     let updatedCart = { ...prevCart };
     if (operation === 'increaseCount') {
       if (updatedCart[product.id]) {
