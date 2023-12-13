@@ -41,7 +41,6 @@ const Document = ({ children }: { children: React.ReactNode }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cart] = useLocalStorageState<CartProps>('cart', {});
   const [totalCartItems, setTotalCartItems] = useState<null | number>(null);
-  const overlayClasses = 'h-screen opacity-80 bg-overlay-gray fixed w-full';
 
   useEffect(() => {
     if (cart) {
@@ -67,8 +66,11 @@ const Document = ({ children }: { children: React.ReactNode }) => {
         <Meta />
         <Links />
       </head>
-      <body className="font-inter bg-main-green">
-        <div className={`${isCartOpen ? overlayClasses : 'opacity-0'}`}></div>
+      <body className="bg-main-green font-inter">
+        <div
+          className={`${
+            isCartOpen ? 'fixed h-screen w-full bg-overlay-gray opacity-80' : 'opacity-0'
+          }`}></div>
         <div className="px-12 py-8">
           <nav className="flex justify-between">
             <Link to="/">
@@ -80,7 +82,7 @@ const Document = ({ children }: { children: React.ReactNode }) => {
               onClick={toggleCart}
               src={cartDesktop}
             />
-            <div className="bg-button-red text-white absolute right-[48px] w-4 rounded-full text-center text-[10px]">
+            <div className="absolute right-[48px] w-4 rounded-full bg-button-red text-center text-[10px] text-white">
               {totalCartItems}
             </div>
           </nav>
