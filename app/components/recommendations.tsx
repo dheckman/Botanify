@@ -13,24 +13,26 @@ export default function Recommendations() {
   const [filteredRecs, setFilteredRecs] = useState(recommendations);
 
   const filteredRecommendations = useMemo(() => {
-    const { prunersInCart, treeCount, kitQuantity } = Object.values(cart).reduce(
-      (acc, curr) => {
-        if (curr.product_type === 'Tree')
-          return { ...acc, treeCount: acc.treeCount + curr.quantity };
-        if (curr.id === 1532751872052) return { ...acc, kitQuantity: curr.quantity };
-        if (curr.id === 4813305610302) return { ...acc, prunersInCart: true };
-        return acc;
-      },
-      { treeCount: 0, kitQuantity: 0, prunersInCart: false }
-    );
-    const shouldRecKit = treeCount > kitQuantity;
-    const shouldRecPruners = !prunersInCart;
-    return filteredRecs?.filter((r) => {
-      return !(
-        (r.id === 1532751872052 && !shouldRecKit) ||
-        (r.id === 4813305610302 && !shouldRecPruners)
+    if (cart) {
+      const { prunersInCart, treeCount, kitQuantity } = Object.values(cart).reduce(
+        (acc, curr) => {
+          if (curr.product_type === 'Tree')
+            return { ...acc, treeCount: acc.treeCount + curr.quantity };
+          if (curr.id === 1532751872052) return { ...acc, kitQuantity: curr.quantity };
+          if (curr.id === 4813305610302) return { ...acc, prunersInCart: true };
+          return acc;
+        },
+        { treeCount: 0, kitQuantity: 0, prunersInCart: false }
       );
-    });
+      const shouldRecKit = treeCount > kitQuantity;
+      const shouldRecPruners = !prunersInCart;
+      return filteredRecs?.filter((r) => {
+        return !(
+          (r.id === 1532751872052 && !shouldRecKit) ||
+          (r.id === 4813305610302 && !shouldRecPruners)
+        );
+      });
+    }
   }, [cart]);
 
   const handleAddToCart = (product: ProductsDataType) => {
